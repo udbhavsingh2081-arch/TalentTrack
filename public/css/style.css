@@ -1,0 +1,110 @@
+/* Navbar */
+.navbar{
+    height: 5rem;
+    background-color: white;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.navbar-collapse{
+    background-color: white;
+}
+
+.nav-link{
+    color: black;
+}
+.nav-icon{
+    margin-right: 5rem  ;
+}
+body{
+    background-color:#f5f7fb;
+}
+
+/* Cards */
+.card-box {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+    max-width: 20rem;
+    padding: 1rem;
+}
+.card-content {
+    display: flex;
+    padding: 1rem;
+}
+.card{
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+.card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(33,112,228,0.15);
+}
+.card-title{
+    font-weight: 600;
+}
+/*jobs*/
+.job-detail-left a{
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+}
+.job-detail-left:hover{
+  transform: scale(1.03);
+  background-color: #2170e4;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+.overview-card{
+    border-left: 5px solid #2170e4;
+}
+.job-details{
+    animation: fadeIn 0.5s ease;
+}
+.job-index{
+    animation: fadeIn 0.5s ease;
+    margin-top: 20px;
+}
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform: translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform: translateY(0);
+    }
+}
+
+.recruiting-badge{
+    background-color: #e8f0ff;
+    color: #2170e4;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    margin-top: 8px;
+}
+
+
+.job-button a{
+    text-decoration: none;
+    margin-right: 1rem;
+    cursor: pointer;
+    opacity: 0.7;
+    animation: fadeIn 0.5s ease;
+    margin-top: 1rem;
+}
+.job-button a:hover{
+       transform: scale(1.03);
+    opacity: 1;
+}
+
+.card-img img{
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.card-img img:hover{
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}

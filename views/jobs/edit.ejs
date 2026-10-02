@@ -1,0 +1,114 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container col-8 mt-4">
+
+    <h2 class="mb-4">Edit Job <%=oldJob.title %></h2>
+
+    <form action="/talenttrack/jobs/<%= oldJob._id %>?_method=PUT" method="POST" novalidate>
+
+        <div class="mb-3">
+            <label for="title" class="form-label">
+                Job Title
+            </label>
+
+            <input
+                type="text"
+                class="form-control"
+                id="title"
+                name="title"
+                value="<%=oldJob.title %>"
+                required
+            >
+            
+                 <div class="valid-feedback">looks good!</div>
+               <div class="invalid-feedback">Please enter valid data</div>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="company" class="form-label">
+                Company Name
+            </label>
+
+            <input
+                type="text"
+                class="form-control"
+                id="company"
+                name="company"
+                value="<%=oldJob.company %>"
+                required
+            >
+            
+                 <div class="valid-feedback">looks good!</div>
+               <div class="invalid-feedback">Please enter valid data</div>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="description" class="form-label">
+                Job Description
+            </label>
+
+            <textarea
+                class="form-control"
+                id="description"
+                name="description"
+                rows="5"
+                required
+            ><%=oldJob.description %></textarea>
+            
+                 <div class="valid-feedback">looks good!</div>
+               <div class="invalid-feedback">Please enter valid data</div>
+        </div>
+
+
+        <div class="row">
+
+            <div class="col-md-6 mb-3">
+
+                <label for="salary" class="form-label">
+                    Salary
+                </label>
+
+                <input
+                    type="number"
+                    class="form-control"
+                    id="salary"
+                    name="salary"
+                    required
+                    value="<%=oldJob.salary %>"
+                >
+                
+                 <div class="valid-feedback">looks good!</div>
+               <div class="invalid-feedback">Please enter valid data</div>
+            </div>
+            <div class="col-md-6 mb-3">
+
+                <label for="location" class="form-label">
+                    Location
+                </label>
+
+                <input
+                    type="text"
+                    class="form-control"
+                    id="location"
+                    name="location"
+                    value="<%=oldJob.location %>"
+                    required
+                >
+                
+                 <div class="valid-feedback">looks good!</div>
+               <div class="invalid-feedback">Please enter valid data</div>
+
+            </div>
+
+        </div>
+
+
+        <button class="btn btn-primary" type="submit">
+            Update Job
+        </button>
+
+    </form>
+
+</div>

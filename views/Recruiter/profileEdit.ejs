@@ -1,0 +1,147 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-5">
+
+    <div class="card shadow border-0">
+
+        <div class="card-body p-4">
+
+            <h2 class="mb-4">
+                Edit Recruiter Profile
+            </h2>
+
+            <form
+                action="/talenttrack/recruiter/profile?_method=PUT"
+                method="POST"
+            >
+
+                <div class="mb-3">
+                    <label class="form-label">
+                        Name
+                    </label>
+
+                    <input
+                        type="text"
+                        name="name"
+                        class="form-control"
+                        value="<%= recruiter.name %>"
+                        required
+                    >
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        class="form-control"
+                        value="<%= recruiter.email %>"
+                        required
+                    >
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">
+                        Company Name
+                    </label>
+
+                    <input
+                        type="text"
+                        name="companyName"
+                        class="form-control"
+                        value="<%= recruiter.companyName || '' %>"
+                    >
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">
+                        Designation
+                    </label>
+
+                    <input
+                        type="text"
+                        name="designation"
+                        class="form-control"
+                        value="<%= recruiter.designation || '' %>"
+                    >
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">
+                        Company Website
+                    </label>
+
+                    <input
+                        type="url"
+                        name="companyWebsite"
+                        class="form-control"
+                        value="<%= recruiter.companyWebsite || '' %>"
+                    >
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">
+                        Company Location
+                    </label>
+
+                    <input
+                        type="text"
+                        name="companyLocation"
+                        class="form-control"
+                        value="<%= recruiter.companyLocation || '' %>"
+                    >
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">
+                        LinkedIn
+                    </label>
+
+                    <input
+                        type="url"
+                        name="linkedin"
+                        class="form-control"
+                        value="<%= recruiter.linkedin || '' %>"
+                    >
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">
+                        Bio
+                    </label>
+
+                    <textarea
+                        name="bio"
+                        rows="4"
+                        class="form-control"
+                    ><%= recruiter.bio || '' %></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">
+                        About Company
+                    </label>
+
+                    <textarea
+                        name="aboutCompany"
+                        rows="5"
+                        class="form-control"
+                    ><%= recruiter.aboutCompany || '' %></textarea>
+                </div>
+
+                <button
+                    class="btn btn-primary"
+                >
+                    Save Changes
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

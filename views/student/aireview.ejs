@@ -1,0 +1,126 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-5">
+
+    <h2 class="mb-4">
+        AI Resume Analysis
+    </h2>
+
+    <div class="row g-4">
+
+        <!-- Resume Score -->
+
+        <div class="col-md-4">
+
+            <div class="card shadow border-0 text-center h-100">
+
+                <div class="card-body">
+
+                    <h6 class="text-muted">
+                        Resume Score
+                    </h6>
+
+                    <h1 class="display-3 text-primary">
+                        <%= score %>/10
+                    </h1>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ATS Status -->
+
+        <div class="col-md-4">
+
+            <div class="card shadow border-0 text-center h-100">
+
+                <div class="card-body">
+
+                    <h6 class="text-muted">
+                        ATS Status
+                    </h6>
+
+                    <% if(atsStatus === "Excellent"){ %>
+
+                        <h3 class="text-success fw-bold">
+                            Excellent
+                        </h3>
+
+                    <% } else if(atsStatus === "Good"){ %>
+
+                        <h3 class="text-warning fw-bold">
+                            Good
+                        </h3>
+
+                    <% } else { %>
+
+                        <h3 class="text-danger fw-bold">
+                            Needs Improvement
+                        </h3>
+
+                    <% } %>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Placement Readiness -->
+
+        <div class="col-md-4 ">
+
+            <div class="card shadow border-0 text-center h-100">
+
+                <div class="card-body">
+
+                    <h6 class="text-muted">
+                        Placement Readiness
+                    </h6>
+
+                    <h3 class="text-info fw-bold">
+                        <%= score * 10 %>%
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Suggestions -->
+
+    <div class="card shadow border-0 mt-4">
+
+        <div class="card-body">
+
+            <h4>
+                AI Suggestions
+            </h4>
+
+            <hr>
+
+            <div style="white-space: pre-line;">
+                <%= suggestions %>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="mt-4">
+
+        <a
+            href="/talenttrack/profile"
+            class="btn btn-dark"
+        >
+            Back To Profile
+        </a>
+
+    </div>
+
+</div>

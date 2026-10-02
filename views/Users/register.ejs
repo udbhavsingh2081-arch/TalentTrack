@@ -1,0 +1,50 @@
+<% layout("layouts/boilerplate") %>
+
+    <div class="body-register">
+        <h2>Register</h2>
+        <p>Create your acoount to get started</p>
+  <form action="/talenttrack/register" method="POST" novalidate>
+        <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">UserName</label>
+  <input type="text" class="form-control"  id="name" placeholder="Enter your name" name="name" required>
+   <div class="valid-feedback">looks good!</div>
+               <div class="invalid-feedback">Please enter valid data</div>
+</div>
+
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Email address</label>
+  <input type="email" class="form-control"  id="email"   placeholder="Enter your email" name="email" required>
+   <div class="valid-feedback">looks good!</div>
+               <div class="invalid-feedback">Please enter valid Email</div>
+</div>
+
+
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Password</label>
+  <input type="password" class="form-control"   id="password"    placeholder="Create a password" name="password" required>
+   <div class="valid-feedback">looks good!</div>
+               <div class="invalid-feedback"> Password must be at least 6 characters.</div>
+</div>
+
+  <div class="mb-3">
+                <label for="role" class="form-label">Select a Role</label>
+                <select
+                 class= "form-select"
+                  aria-label="Default select example"
+                    id="role"
+                    name="role"
+                    required
+                >
+                    <option value="student" selected >Student</option>
+                    <option value="recruiter">Recruiter</option>
+                </select>
+
+                 <div class="valid-feedback">looks good!</div>
+               <div class="invalid-feedback">Please enter valid data</div>
+            </div>
+
+             <button type="submit" class="btn btn-primary">
+                Create Account
+            </button>
+  </form>
+    </div>

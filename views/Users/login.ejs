@@ -1,0 +1,28 @@
+<% layout("layouts/boilerplate") %>
+
+    <div class="body-register">
+        <h2>Login</h2>
+  <form action="/talenttrack/login" method="POST" novalidate>
+        
+
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Email address</label>
+  <input type="email" class="form-control"  id="email"   placeholder="Enter your email" name="email" required>
+  
+                 <div class="valid-feedback">looks good!</div>
+               <div class="invalid-feedback">Please enter valid Email</div>
+</div>
+
+
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Password</label>
+  <input type="password" class="form-control"   id="password"    placeholder="Create a password" name="password" required>
+                 <div class="valid-feedback">looks good!</div>
+               <div class="invalid-feedback">Please enter valid password</div>
+</div>
+
+<button type="submit" class="btn btn-primary">
+                Login
+            </button>
+  </form>
+    </div>

@@ -1,0 +1,83 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-4">
+
+    <h2 class="mb-4">
+        My Applications
+    </h2>
+
+    <table class="table table-hover">
+
+        <thead class="table-dark">
+            <tr>
+                <th>Job Title</th>
+                <th>Company</th>
+                <th>Location</th>
+                <th>Salary</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        <% for(let app of applications){ %>
+
+            <tr>
+
+                <td>
+                    <%= app.job.title %>
+                </td>
+
+                <td>
+                    <%= app.job.company %>
+                </td>
+
+                <td>
+                    <%= app.job.location %>
+                </td>
+
+                <td>
+                    ₹<%= app.job.salary %>
+                </td>
+
+                <td>
+
+                    <% if(app.status === "Pending"){ %>
+                        <span class="badge bg-warning">
+                            Pending
+                        </span>
+                    <% } %>
+
+                    <% if(app.status === "Accepted"){ %>
+                        <span class="badge bg-success">
+                            Selected
+                        </span>
+                    <% } %>
+
+                    <% if(app.status === "Rejected"){ %>
+                        <span class="badge bg-danger">
+                            Rejected
+                        </span>
+                    <% } %>
+
+                </td>
+
+                <td>
+                    <a
+                        href="/talenttrack/jobs/<%= app.job._id %>"
+                        class="btn btn-primary btn-sm"
+                    >
+                        View Job
+                    </a>
+                </td>
+
+            </tr>
+
+        <% } %>
+
+        </tbody>
+
+    </table>
+
+</div>

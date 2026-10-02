@@ -1,0 +1,238 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-5">
+
+    <div class="card shadow border-0">
+
+        <div class="card-body p-5">
+
+            <div class="d-flex justify-content-between align-items-center">
+
+                <div class="text-center w-100">
+
+      <i class="fa-solid fa-user-graduate fa-4x text-primary mb-3"></i>
+
+        <h2 class="fw-bold">
+        <%= student.name %>
+        </h2>
+
+        <p class="text-muted">
+        <%= student.degree || "Student" %>
+        </p>
+
+        </div>
+
+            </div>
+
+            <hr>
+
+            <div class="row">
+
+                <!-- Name -->
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label fw-bold">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        value="<%= student.name %>"
+                        readonly
+                    >
+
+                </div>
+
+                <!-- Email -->
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label fw-bold">
+                        Email
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        value="<%= student.email %>"
+                        readonly
+                    >
+
+                </div>
+
+                <!-- College -->
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label fw-bold">
+                        College
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        value="<%= student.college || 'Not Added' %>"
+                        readonly
+                    >
+
+                </div>
+
+                <!-- Degree -->
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label fw-bold">
+                        Degree
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        value="<%= student.degree || 'Not Added' %>"
+                        readonly
+                    >
+
+                </div>
+
+                <!-- Skills -->
+
+                <div class="col-md-12 mb-3">
+
+                    <label class="form-label fw-bold">
+                        Skills
+                    </label>
+
+                    <textarea
+                        class="form-control"
+                        rows="3"
+                        readonly
+                    ><%= student.skills || 'Not Added' %></textarea>
+
+                </div>
+
+                <!-- Resume -->
+
+                <div class="col-md-4 mb-3">
+
+                    <label class="form-label fw-bold">
+                        Resume
+                    </label>
+
+                    <br>
+
+                    <% if(student.resume && student.resume.url){ %>
+
+                        <a
+                            href="<%= student.resume.url %>"
+                            target="_blank"
+                            class="btn btn-primary"
+                        >
+                            View Resume
+                        </a>
+
+                    <% } else { %>
+
+                        <span class="text-muted">
+                            Resume Not Uploaded
+                        </span>
+
+                    <% } %>
+
+                </div>
+
+                <!-- GitHub -->
+
+                <div class="col-md-4 mb-3">
+
+                    <label class="form-label fw-bold">
+                        GitHub
+                    </label>
+
+                    <br>
+
+                    <% if(student.github){ %>
+
+                        <a
+                            href="<%= student.github %>"
+                            target="_blank"
+                            class="btn btn-dark"
+                        >
+                            Open GitHub
+                        </a>
+
+                    <% } else { %>
+
+                        <span class="text-muted">
+                            Not Added
+                        </span>
+
+                    <% } %>
+
+                </div>
+
+                <!-- LinkedIn -->
+
+                <div class="col-md-4 mb-3">
+
+                    <label class="form-label fw-bold">
+                        LinkedIn
+                    </label>
+
+                    <br>
+
+                    <% if(student.linkedin){ %>
+
+                        <a
+                            href="<%= student.linkedin %>"
+                            target="_blank"
+                            class="btn btn-info text-white"
+                        >
+                            Open LinkedIn
+                        </a>
+
+                    <% } else { %>
+
+                        <span class="text-muted">
+                            Not Added
+                        </span>
+
+                    <% } %>
+
+                </div>
+
+                <!-- Bio -->
+
+                <div class="col-md-12 mt-3">
+
+                    <label class="form-label fw-bold">
+                        Bio
+                    </label>
+
+                    <textarea
+                        class="form-control"
+                        rows="5"
+                        readonly
+                    ><%= student.bio || 'No Bio Added Yet' %></textarea>
+
+                </div>
+
+            </div>
+
+            <div class="mt-4">
+
+                <a
+                    href="/talenttrack/recruiter/applications"
+                    class="btn btn-secondary"
+                >
+                    Back to Applications
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

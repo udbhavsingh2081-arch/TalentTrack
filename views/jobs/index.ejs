@@ -1,0 +1,84 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-4 job-index">
+
+    <h2 class="mb-4">Available Jobs</h2>
+
+    <div class="row g-4">
+
+        <% for(let job of alljobs){ %>
+
+            <div class="col-lg-4 col-md-6 col-sm-12">
+
+                <div class="card h-100 shadow-sm">
+
+                    <div class="card-body d-flex flex-column card-img">
+
+                        <% if(job.companyLogo && job.companyLogo.url){ %>
+
+                            <div class="text-center mb-3">
+
+                                <img
+                                    src="<%= job.companyLogo.url %>"
+                                    width="120"
+                                    height="120"
+                                    class="rounded border"
+                                    style="object-fit:cover;"
+                                >
+
+                            </div>
+
+                        <% } else { %>
+
+                            <div
+                                class="border rounded d-flex justify-content-center align-items-center mx-auto mb-3"
+                                style="width:120px;height:120px;"
+                            >
+                                <i
+                                    class="fa-solid fa-building"
+                                    style="font-size:50px;color:gray;"
+                                ></i>
+                            </div>
+
+                        <% } %>
+
+                        <h5 class="card-title">
+                            <%= job.title %>
+                        </h5>
+
+                        <h6 class="text-muted mb-3">
+                            <%= job.company %>
+                        </h6>
+
+                        <p class="card-text flex-grow-1">
+                            <%= job.description %>
+                        </p>
+
+                        <p class="mb-1">
+                            <strong>Salary:</strong>
+                            ₹<%= job.salary.toLocaleString() %>
+                        </p>
+
+                        <p class="mb-3">
+                            <strong>Location:</strong>
+                            <%= job.location %>
+                        </p>
+
+                        <a
+                            href="/talenttrack/jobs/<%= job._id %>"
+                            class="btn btn-primary mt-auto"
+                        >
+                            View Details
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        <% } %>
+
+    </div>
+
+</div>

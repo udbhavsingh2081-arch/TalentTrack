@@ -1,0 +1,135 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container col-8 mt-4">
+
+    <h2 class="mb-4">Post a New Job</h2>
+
+   <form
+ method="POST"
+ action="/talenttrack/job"
+ enctype="multipart/form-data"
+ novalidate
+>
+
+        <div class="mb-3">
+            <label for="title" class="form-label">
+                Job Title
+            </label>
+
+            <input
+                type="text"
+                class="form-control"
+                id="title"
+                name="title"
+                placeholder="Frontend Developer"
+                required
+            >
+            
+                 <div class="valid-feedback">looks good!</div>
+               <div class="invalid-feedback">Please enter valid data</div>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="company" class="form-label">
+                Company Name
+            </label>
+
+            <input
+                type="text"
+                class="form-control"
+                id="company"
+                name="company"
+                placeholder="Google"
+                required
+            >
+            
+                 <div class="valid-feedback">looks good!</div>
+               <div class="invalid-feedback">Please enter valid data</div>
+        </div>
+
+        <div class="mb-3">
+
+    <label class="form-label">
+        Company Logo
+    </label>
+
+    <input
+        type="file"
+        name="companyLogo"
+        class="form-control"
+        accept="image/*"
+    >
+
+                 <div class="valid-feedback">looks good!</div>
+               <div class="invalid-feedback">Please enter valid data</div>
+</div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">
+                Job Description
+            </label>
+
+            <textarea
+                class="form-control"
+                id="description"
+                name="description"
+                rows="5"
+                placeholder="Write job description here..."
+                required
+            ></textarea>
+            
+                 <div class="valid-feedback">looks good!</div>
+               <div class="invalid-feedback">Please enter valid data</div>
+        </div>
+
+
+        <div class="row">
+
+            <div class="col-md-6 mb-3">
+
+                <label for="salary" class="form-label">
+                    Salary
+                </label>
+
+                <input
+                    type="number"
+                    class="form-control"
+                    id="salary"
+                    name="salary"
+                    required
+                    value="10000"
+                >
+                
+                 <div class="valid-feedback">looks good!</div>
+               <div class="invalid-feedback">Please enter valid data</div>
+            </div>
+            <div class="col-md-6 mb-3">
+
+                <label for="location" class="form-label">
+                    Location
+                </label>
+
+                <input
+                    type="text"
+                    class="form-control"
+                    id="location"
+                    name="location"
+                    placeholder="Bangalore"
+                    required
+                >
+                    
+                 <div class="valid-feedback">looks good!</div>
+               <div class="invalid-feedback">Please enter valid data</div>
+            </div>
+
+        </div>
+
+
+        <button class="btn btn-primary" type="submit">
+            Post Job
+        </button>
+
+    </form>
+
+</div>

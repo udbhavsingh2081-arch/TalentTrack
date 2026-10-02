@@ -1,0 +1,147 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-4">
+
+    <h1 class="mb-3">My Applications</h1>
+    <p class="text-muted">
+        Track and manage your job applications
+    </p>
+
+    <!-- Stats Cards -->
+    <div class="row mb-4">
+
+        <div class="col-md-3">
+            <div class="card shadow-sm p-3">
+                <h6>Total Applied</h6>
+                <h2><%= totalApplied %></h2>
+                <a href="/talenttrack/student/applications"
+   class="btn btn-primary btn-sm">
+   View Applications
+</a>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm p-3 border-success">
+                <h6>Selected</h6>
+                <h2 class="text-success">
+                    <%= selected %>
+                </h2>
+                        <a href="/talenttrack/student/applications?status=Selected"
+   class="btn btn-success btn-sm">
+   View Selected
+</a>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm p-3 border-warning">
+                <h6>Pending</h6>
+                <h2 class="text-warning">
+                    <%= pending %>
+                </h2>
+                    <a href="/talenttrack/student/applications?status=Pending"
+   class="btn btn-warning btn-sm">
+   View Pending
+</a>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm p-3 border-danger">
+                <h6>Rejected</h6>
+                <h2 class="text-danger">
+                    <%= rejected %>
+                </h2>
+                <a href="/talenttrack/student/applications?status=Rejected"
+   class="btn btn-danger btn-sm">
+   View Rejected
+</a>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Applications -->
+    <div class="row">
+
+        <% applications.forEach(app => { %>
+
+            <div class="col-md-4 mb-4">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body">
+
+                        <h4>
+                            <%= app.job.title %>
+                        </h4>
+
+                        <h6 class="text-muted">
+                            <%= app.job.company %>
+                        </h6>
+
+                        <hr>
+
+                        <p>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <%= app.job.location %>
+                        </p>
+
+                        <p>
+                            <i class="fa-solid fa-indian-rupee-sign"></i>
+                            ₹<%= app.job.salary %>
+                        </p>
+
+                        <p>
+                            Applied:
+                            <%= app.createdAt.toDateString() %>
+                        </p>
+
+                        <% if(app.status==="Pending"){ %>
+
+                            <span class="badge bg-warning">
+                                Pending
+                            </span>
+
+                        <% } %>
+
+                        <% if(app.status==="Selected"){ %>
+
+                            <span class="badge bg-success">
+                                Selected
+                            </span>
+
+                        <% } %>
+
+                        <% if(app.status==="Rejected"){ %>
+
+                            <span class="badge bg-danger">
+                                Rejected
+                            </span>
+
+                        <% } %>
+
+                    </div>
+
+                    <div class="card-footer bg-white">
+
+                        <a
+                            href="/talenttrack/jobs/<%= app.job._id %>"
+                            class="btn btn-primary btn-sm"
+                        >
+                            View Job
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        <% }) %>
+
+    </div>
+
+</div>

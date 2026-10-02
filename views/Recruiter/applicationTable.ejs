@@ -1,0 +1,91 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-4">
+
+<h2>All Applications</h2>
+
+<table class="table table-bordered table-hover">
+
+    <thead class="table-dark">
+        <tr>
+            <th>Student</th>
+            <th>Email</th>
+            <th>Job</th>
+            <th>Status</th>
+            <th>Profile</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+    <% applications.forEach(app => { %>
+
+        <tr>
+
+            <td>
+                <%= app.student.name %>
+            </td>
+
+            <td>
+                <%= app.student.email %>
+            </td>
+
+            <td>
+                <%= app.job.title %>
+            </td>
+
+            <td>
+
+<% if(app.status === "Pending"){ %>
+
+    <form
+        action="/talenttrack/application/<%= app._id %>/accept"
+        method="POST"
+        class="d-inline"
+        novalidate
+    >
+        <button class="btn btn-success btn-sm">
+            Accept
+        </button>
+    </form>
+
+    <form
+        action="/talenttrack/application/<%= app._id %>/reject"
+        method="POST"
+        class="d-inline"
+    >
+        <button class="btn btn-danger btn-sm">
+            Reject
+        </button>
+    </form>
+
+<% } else { %>
+
+    <span class="text-muted">
+        Decision Taken
+    </span>
+
+<% } %>
+
+</td>
+
+<td>
+
+    <a
+        href="/talenttrack/student/<%= app.student._id %>"
+        class="btn btn-outline-info btn-sm"
+    >
+        View
+    </a>
+
+</td>
+
+        </tr>
+
+    <% }) %>
+
+    </tbody>
+
+</table>
+
+</div>

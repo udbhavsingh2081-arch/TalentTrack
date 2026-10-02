@@ -1,0 +1,86 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Talent Track</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+       <div class="navbar-nav nav-icon">
+        <a class="nav-link active" aria-current="page" href="/talenttrack/jobs">Browse Jobs</a>
+
+       <% if(currUser && currUser.role === "recruiter"){ %>
+    <a href="/talenttrack/recruiter/dashboard" class="nav-link active" aria-current="page" >Dashboard</a>
+<% } %>
+
+    <% if(currUser && currUser.role === "student"){ %>
+   <a class="nav-link active" aria-current="page" href="/talenttrack/student/dashboard">
+    Dashboard
+</a>
+<% } %>
+
+      </div>
+      
+<form
+    class="d-flex"
+    action="/talenttrack/jobs"
+    method="GET"
+>
+
+    <input
+        class="form-control me-2"
+        type="text"
+        name="search"
+        placeholder="Search Jobs"
+    >
+
+    <button
+        class="btn btn-outline-success"
+        type="submit"
+    >
+        Search
+    </button>
+
+</form>
+
+</div>
+
+
+      <div class="navbar-nav ms-auto job-button">
+
+<% if(!currUser){ %>
+
+    <a class="nav-link" href="/talenttrack/login"><b>Login</b></a>
+
+<a class="nav-link bg-primary text-white px-3 rounded ms-2"
+   href="/talenttrack/register">
+    Register
+</a>
+
+<% } else { %>
+
+    <span class="nav-link mt-3 ">
+        Welcome <%= currUser.name %>
+    </span>
+   <% if(currUser.role === "student"){ %>
+
+<a href="/talenttrack/profile"
+   class="btn btn-outline-primary">
+   View Profile
+</a>
+
+<% } else if(currUser.role === "recruiter"){ %>
+
+<a href="/talenttrack/recruiter/profile"
+   class="btn btn-outline-primary">
+   View Profile
+</a>
+
+<% } %>
+    <a class="nav-link" href="/talenttrack/logout"><b>Logout</b></a>
+
+<% } %>
+
+</div>
+
+    </div>
+</nav>

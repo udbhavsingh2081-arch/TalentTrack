@@ -1,0 +1,113 @@
+<% layout("./layouts/boilerplate") %>
+
+<div class="container mt-4">
+
+    <h2 class="mb-4">
+        Recruiter Dashboard
+    </h2>
+
+    <div class="row">
+
+        <div class="col-md-4">
+    <div class="card shadow-sm p-3">
+        <h5>Total Jobs</h5>
+
+        <h2><%= totalJobs %></h2>
+
+        <div class="mt-3">
+            <a href="/talenttrack/recruiter/jobs"
+               class="btn btn-outline-primary btn-sm">
+               View Jobs
+            </a>
+        </div>
+    </div>
+</div>
+       <div class="col-md-4">
+    <div class="card shadow-sm p-3">
+        <h5>Total Applications</h5>
+
+        <h2><%= totalApplications %></h2>
+
+        <div class="mt-3">
+            <a href="/talenttrack/recruiter/applications"
+               class="btn btn-outline-primary btn-sm">
+               View Applications
+            </a>
+        </div>
+    </div>
+</div>
+
+      <div class="col-md-4">
+    <div class="card shadow-sm p-3">
+        <h5>Pending Applications</h5>
+
+        <h2><%= pendingApplications %></h2>
+
+        <div class="mt-3">
+            <a href="/talenttrack/recruiter/applications"
+               class="btn btn-outline-warning btn-sm">
+               Review Applications
+            </a>
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mt-4 mb-3">
+        <h3>My Jobs</h3>
+
+        <a href="/talenttrack/new" class="btn btn-primary">
+            + Post New Job
+        </a>
+    </div>
+
+    <% if(jobs.length === 0){ %>
+
+        <div class="alert alert-info">
+            No jobs posted yet.
+        </div>
+
+    <% } %>
+
+    <% jobs.forEach(job => { %>
+
+        <div class="card mb-3 shadow-sm">
+
+            <div class="card-body">
+
+                <div class="d-flex justify-content-between">
+
+                    <div>
+                        <h5><%= job.title %></h5>
+
+                        <p class="text-muted">
+                            <%= job.company %>
+                        </p>
+
+                        <p>
+                            <%= job.location %>
+                        </p>
+                    </div>
+
+                    <div>
+                        <a href="/talenttrack/jobs/<%= job._id %>"
+                           class="btn btn-outline-primary">
+                            View
+                        </a>
+
+                        <a href="/talenttrack/jobs/edit/<%= job._id %>"
+                           class="btn btn-outline-warning">
+                            Edit
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    <% }) %>
+
+</div>
