@@ -1,6 +1,8 @@
 const express=require("express");
 const app=express();
 const mongoose=require("mongoose");
+const dbUrl = process.env.ATLASDB_URL;
+
 const path=require("path");
 const ejsMate=require("ejs-mate");
 const methodOverride = require("method-override");
@@ -64,13 +66,11 @@ const { isLoggedIn,isRecruiter,isStudent,isApplicationOwner } = require("./middl
 
 
 main()
-.then(()=>console.log("DB Connected"))
-.catch(err=>console.log(err));
+.then(() => console.log("DB Connected"))
+.catch(err => console.log(err));
 
-async function main(){
- await mongoose.connect(
-  "mongodb://127.0.0.1:27017/talenttrack"
- );
+async function main() {
+    await mongoose.connect(dbUrl);
 }
 
 app.use((req,res,next)=>{
@@ -148,8 +148,8 @@ app.get("/me",(req,res)=>{
 
 
 
+const port = process.env.PORT || 5000;
 
-app.listen(5000,()=>{
-    console.log("Server Start");
+app.listen(port, () => {
+    console.log(`Server Start on ${port}`);
 });
-

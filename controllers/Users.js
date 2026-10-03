@@ -1,7 +1,7 @@
 const User = require("../models/user");
 const Application = require("../models/application");
 const Job = require ("../models/job");
-const ExpressError = require("../utilis/ExpressError");
+const ExpressError = require("../utilis/expressError");
 
 const ai = require("../utilis/gemini");
 
