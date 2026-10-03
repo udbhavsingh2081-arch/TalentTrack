@@ -15,18 +15,15 @@
                     <div class="card-body d-flex flex-column card-img">
 
                         <% if(job.companyLogo && job.companyLogo.url){ %>
+<div class="text-center mb-3">
 
-                            <div class="text-center mb-3">
+    <img
+        src="<%= job.companyLogo.url %>"
+        class="company-logo"
+        alt="<%= job.company %>"
+    >
 
-                                <img
-                                    src="<%= job.companyLogo.url %>"
-                                    width="120"
-                                    height="120"
-                                    class="rounded border"
-                                    style="object-fit:cover;"
-                                >
-
-                            </div>
+</div>
 
                         <% } else { %>
 
