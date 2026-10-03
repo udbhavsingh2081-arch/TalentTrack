@@ -108,3 +108,48 @@ body{
     transform: scale(1.05);
     transition: all 0.3s ease;
 }
+
+/*footer*/
+
+footer{
+    margin-top: 3rem;
+}
+
+.f-info{
+    height: 8rem;
+    background-color: #ebebeb;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.f-info-social,
+.f-info-links,
+.f-info-data{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.f-info-social a{
+    color: #222222;
+    text-decoration: none;
+}
+
+.f-info-social i{
+    font-size: 1.4rem;
+    margin-right: 1rem;
+}
+
+.f-info-links a{
+    text-decoration: none;
+    color: #222222;
+    margin: 0 0.5rem;
+}
+
+.f-info-links a:hover{
+    text-decoration: underline;
+}
