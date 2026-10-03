@@ -1,7 +1,7 @@
 const Job = require ("../models/job");
 
 const Application = require("../models/application");
-const ExpressError = require("../utilis/ExpressError");
+const ExpressError = require("../utilis/expressError");
 
 
 //jobs display
