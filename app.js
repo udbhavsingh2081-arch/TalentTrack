@@ -125,12 +125,10 @@ app.use((err,req,res,next)=>{
     next(err);
 });
 
-app.get("/",(req,res)=>{
-    res.send("succesful start");
-    console.log(isLoggedIn);
-console.log(isRecruiter);
-console.log(isStudent);
+app.get("/", (req, res) => {
+    res.redirect("/talenttrack");
 });
+
 app.get("/talenttrack",(req,res)=>{
     res.render("home.ejs");
 });

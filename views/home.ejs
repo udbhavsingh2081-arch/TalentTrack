@@ -1,10 +1,110 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>talentTrack</title>
-</head>
-<body><h3>this is Home</h3>
-</body>
-</html>
+<% layout("/layouts/boilerplate") %>
+
+<div class="container">
+
+    <!-- Hero Section -->
+    <div class="text-center py-5">
+        <h1 class="fw-bold display-4">
+            Find Your Dream Internship & Job
+        </h1>
+
+        <p class="lead text-muted mt-3">
+            TalentTrack connects students with recruiters and helps
+            candidates discover internships, jobs, and career opportunities.
+        </p>
+
+        <div class="mt-4">
+            <a href="/talenttrack/jobs" class="btn btn-primary btn-lg me-3">
+                Explore Jobs
+            </a>
+
+            <% if(!currUser){ %>
+                <a href="/talenttrack/register" class="btn btn-outline-primary btn-lg">
+                    Get Started
+                </a>
+            <% } %>
+        </div>
+    </div>
+
+    <!-- Features -->
+    <div class="row text-center my-5">
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <i class="fa-solid fa-briefcase fa-3x text-primary mb-3"></i>
+                    <h4>Find Jobs</h4>
+                    <p>
+                        Browse internships and full-time jobs from
+                        top companies.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <i class="fa-solid fa-file-lines fa-3x text-primary mb-3"></i>
+                    <h4>Build Profile</h4>
+                    <p>
+                        Create a professional profile and showcase
+                        your skills, projects, and resume.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <i class="fa-solid fa-robot fa-3x text-primary mb-3"></i>
+                    <h4>AI Career Review</h4>
+                    <p>
+                        Get AI-powered feedback on resumes and
+                        improve your chances of getting hired.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Stats -->
+    <div class="row text-center bg-light rounded p-4 my-5">
+
+        <div class="col-md-4">
+            <h2 class="fw-bold text-primary">100+</h2>
+            <p>Students</p>
+        </div>
+
+        <div class="col-md-4">
+            <h2 class="fw-bold text-primary">50+</h2>
+            <p>Jobs Posted</p>
+        </div>
+
+        <div class="col-md-4">
+            <h2 class="fw-bold text-primary">20+</h2>
+            <p>Recruiters</p>
+        </div>
+
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center py-5">
+        <h2 class="fw-bold">
+            Start Your Career Journey Today
+        </h2>
+
+        <p class="text-muted">
+            Join TalentTrack and connect with opportunities that match your skills.
+        </p>
+
+        <% if(!currUser){ %>
+            <a href="/talenttrack/register" class="btn btn-primary btn-lg">
+                Create Free Account
+            </a>
+        <% } %>
+    </div>
+
+</div>
