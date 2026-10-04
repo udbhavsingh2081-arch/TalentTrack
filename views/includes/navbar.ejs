@@ -21,7 +21,7 @@
       </div>
       
 <form
-    class="d-flex"
+    class="d-flex search-form"
     action="/talenttrack/jobs"
     method="GET"
 >
@@ -51,16 +51,16 @@
 
     <a class="nav-link" href="/talenttrack/login"><b>Login</b></a>
 
-<a class="nav-link bg-primary text-white px-3 rounded ms-2"
+<a class="nav-link bg-primary text-white px-3 rounded ms-lg-2"
    href="/talenttrack/register">
     Register
 </a>
 
 <% } else { %>
 
-    <span class="nav-link mt-3 ">
-        Welcome <%= currUser.name %>
-    </span>
+    <span class="nav-link welcome-text">
+    Welcome <%= currUser.name %>
+</span>
    <% if(currUser.role === "student"){ %>
 
 <a href="/talenttrack/profile"

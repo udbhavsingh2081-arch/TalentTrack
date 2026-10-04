@@ -1,80 +1,5 @@
 <% layout("/layouts/boilerplate") %>
 
-<style>
-.hero-section{
-    background: linear-gradient(135deg,#2170e4,#4f8ff7);
-    color:white;
-    border-radius:25px;
-    padding:80px 30px;
-    margin-top:20px;
-    overflow:hidden;
-}
-
-.hero-section h1{
-    animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float{
-    0%{transform:translateY(0px);}
-    50%{transform:translateY(-10px);}
-    100%{transform:translateY(0px);}
-}
-
-.feature-card{
-    transition:all 0.3s ease;
-    border:none;
-    border-radius:20px;
-}
-
-.feature-card:hover{
-    transform:translateY(-10px);
-    box-shadow:0 15px 30px rgba(0,0,0,0.15);
-}
-
-.feature-icon{
-    width:80px;
-    height:80px;
-    border-radius:50%;
-    background:#2170e4;
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:2rem;
-    margin:0 auto 20px;
-}
-
-.stats-box{
-    background:#f8f9fa;
-    border-radius:20px;
-}
-
-.stats-box h2{
-    color:#2170e4;
-    font-weight:bold;
-}
-
-.recruiter-section{
-    background:#212529;
-    color:white;
-    border-radius:25px;
-}
-
-.fade-up{
-    animation:fadeUp 1s ease;
-}
-
-@keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(30px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-</style>
 
 <div class="container">
 
@@ -114,7 +39,7 @@
 
         <form action="/talenttrack/jobs" class="mt-5">
 
-            <div class="input-group input-group-lg w-75 mx-auto">
+         <div class="input-group input-group-lg mx-auto">
 
                 <input
                     type="text"
@@ -144,7 +69,7 @@
             </p>
         </div>
 
-        <div class="row">
+        <div class="row g-4">
 
             <div class="col-md-4 mb-4">
 
