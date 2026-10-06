@@ -2,7 +2,7 @@ const User = require("../models/user");
 const Application = require("../models/application");
 const Job = require ("../models/job");
 const ExpressError = require("../utilis/expressError");
-const transporter = require("../utils/mailer");
+const transporter = require("../utilis/mailer");
 const ai = require("../utilis/gemini");
 
 //Home Page
