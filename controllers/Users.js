@@ -71,54 +71,45 @@ module.exports.loginPage=(req,res)=>{
 
     res.render("Users/login");
 };
+module.exports.login = async (req, res) => {
 
-module.exports.login = async(req,res)=>{
+    transporter.sendMail({
+        from: process.env.EMAIL_USER,
+        to: req.user.email,
+        subject: "Login Alert - TalentTrack",
 
-    try{
+        html: `
+            <h2>Hello ${req.user.name},</h2>
 
-        await transporter.sendMail({
+            <p>
+                You have successfully logged in to
+                <b>TalentTrack</b>.
+            </p>
 
-            from: process.env.EMAIL_USER,
+            <p>
+                If this wasn't you,
+                please change your password.
+            </p>
 
-            to: req.user.email,
+            <br>
 
-            subject: "Login Alert - TalentTrack",
-
-            html: `
-                <h2>Hello ${req.user.name},</h2>
-
-                <p>
-                    You have successfully logged in to
-                    <b>TalentTrack</b>.
-                </p>
-
-                <p>
-                    If this wasn't you,
-                    please change your password.
-                </p>
-
-                <br>
-
-                <p>
-                    Team TalentTrack
-                </p>
-            `
-        });
-
-    }catch(err){
-
-        console.log("Email Error:",err);
-
-    }
+            <p>Team TalentTrack</p>
+        `
+    })
+    .then(() => {
+        console.log("Login email sent successfully");
+    })
+    .catch((err) => {
+        console.log("Email Error:", err);
+    });
 
     req.flash(
         "success",
-        "Welcome Back To TalentTrack"
+        `Welcome Back ${req.user.name}`
     );
 
     res.redirect("/talenttrack/jobs");
 };
-
     //LogOut
 
     module.exports.logOut=(req,res,next)=>{
