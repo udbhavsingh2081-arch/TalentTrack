@@ -2,7 +2,7 @@ const User = require("../models/user");
 const Application = require("../models/application");
 const Job = require ("../models/job");
 const ExpressError = require("../utilis/expressError");
-
+const transporter = require("../utils/mailer");
 const ai = require("../utilis/gemini");
 
 //Home Page
@@ -72,18 +72,52 @@ module.exports.loginPage=(req,res)=>{
     res.render("Users/login");
 };
 
-module.exports.login= (req,res)=>{
-     console.log("LOGIN SUCCESS");
-    console.log(req.user);
+module.exports.login = async(req,res)=>{
 
-        req.flash("success","Welcome back!");
+    try{
 
-         console.log("LOGIN CONTROLLER HIT");
-    console.log("USER AFTER LOGIN =", req.user);
+        await transporter.sendMail({
 
+            from: process.env.EMAIL_USER,
 
-        res.redirect("/talenttrack/jobs");
-    };
+            to: req.user.email,
+
+            subject: "Login Alert - TalentTrack",
+
+            html: `
+                <h2>Hello ${req.user.name},</h2>
+
+                <p>
+                    You have successfully logged in to
+                    <b>TalentTrack</b>.
+                </p>
+
+                <p>
+                    If this wasn't you,
+                    please change your password.
+                </p>
+
+                <br>
+
+                <p>
+                    Team TalentTrack
+                </p>
+            `
+        });
+
+    }catch(err){
+
+        console.log("Email Error:",err);
+
+    }
+
+    req.flash(
+        "success",
+        "Welcome Back To TalentTrack"
+    );
+
+    res.redirect("/talenttrack/jobs");
+};
 
     //LogOut
 
