@@ -71,47 +71,31 @@ module.exports.loginPage=(req,res)=>{
 
     res.render("Users/login");
 };
-module.exports.login = async (req, res) => {
+module.exports.login = async(req,res)=>{
 
+    console.log("LOGIN CONTROLLER EXECUTED");
     console.log("EMAIL_USER:", process.env.EMAIL_USER);
-console.log("EMAIL_PASS EXISTS:", !!process.env.EMAIL_PASS);
-console.log("Sending mail to:", req.user.email);
+    console.log("EMAIL_PASS EXISTS:", !!process.env.EMAIL_PASS);
 
-    transporter.sendMail({
-        from: process.env.EMAIL_USER,
-        to: req.user.email,
-        subject: "Login Alert - TalentTrack",
+    try{
 
-        html: `
-            <h2>Hello ${req.user.name},</h2>
+        const info = await transporter.sendMail({
+            from: process.env.EMAIL_USER,
+            to: req.user.email,
+            subject: "Login Alert - TalentTrack",
+            text: "Test Email"
+        });
 
-            <p>
-                You have successfully logged in to
-                <b>TalentTrack</b>.
-            </p>
+        console.log("EMAIL SENT");
+        console.log(info);
 
-            <p>
-                If this wasn't you,
-                please change your password.
-            </p>
+    }catch(err){
 
-            <br>
+        console.error("EMAIL ERROR:", err);
 
-            <p>Team TalentTrack</p>
-        `
-    })
-    .then(() => {
-        console.log("Login email sent successfully");
-    })
-    .catch((err) => {
-        console.log("Email Error:", err);
-    });
+    }
 
-    req.flash(
-        "success",
-        `Welcome Back ${req.user.name}`
-    );
-
+    req.flash("success","Welcome Back To TalentTrack");
     res.redirect("/talenttrack/jobs");
 };
     //LogOut
