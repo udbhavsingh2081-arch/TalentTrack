@@ -5,6 +5,10 @@
 
 body{
     font-family: "Plus Jakarta Sans", sans-serif;
+     min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    height:100%;
 }
 /* Navbar */
 
@@ -184,6 +188,12 @@ body{
 
 
 /*footer*/
+.main-content{
+    flex:1;
+}
+.container{
+    flex:1;
+}
 
 footer{
     margin-top: 3rem;
