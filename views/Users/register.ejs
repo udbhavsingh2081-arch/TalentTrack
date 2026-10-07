@@ -1,50 +1,181 @@
 <% layout("layouts/boilerplate") %>
 
-    <div class="body-register">
-        <h2>Register</h2>
-        <p>Create your acoount to get started</p>
-  <form action="/talenttrack/register" method="POST" novalidate>
-        <div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">UserName</label>
-  <input type="text" class="form-control"  id="name" placeholder="Enter your name" name="name" required>
-   <div class="valid-feedback">looks good!</div>
-               <div class="invalid-feedback">Please enter valid data</div>
-</div>
+<div class="container py-5">
 
-<div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">Email address</label>
-  <input type="email" class="form-control"  id="email"   placeholder="Enter your email" name="email" required>
-   <div class="valid-feedback">looks good!</div>
-               <div class="invalid-feedback">Please enter valid Email</div>
-</div>
+    <div class="row justify-content-center">
 
+        <div class="col-lg-5 col-md-7 col-sm-10">
 
-<div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">Password</label>
-  <input type="password" class="form-control"   id="password"    placeholder="Create a password" name="password" required>
-   <div class="valid-feedback">looks good!</div>
-               <div class="invalid-feedback"> Password must be at least 6 characters.</div>
-</div>
+            <div class="card shadow border-0 rounded-4">
 
-  <div class="mb-3">
-                <label for="role" class="form-label">Select a Role</label>
-                <select
-                 class= "form-select"
-                  aria-label="Default select example"
-                    id="role"
-                    name="role"
-                    required
-                >
-                    <option value="student" selected >Student</option>
-                    <option value="recruiter">Recruiter</option>
-                </select>
+                <div class="card-body p-4">
 
-                 <div class="valid-feedback">looks good!</div>
-               <div class="invalid-feedback">Please enter valid data</div>
+                    <h2 class="text-center mb-2">
+                        Register
+                    </h2>
+
+                    <p class="text-center text-muted mb-4">
+                        Create your account to get started
+                    </p>
+
+                    <form
+                        action="/talenttrack/register"
+                        method="POST"
+                        novalidate
+                    >
+
+                        <div class="mb-3">
+
+                            <label
+                                for="name"
+                                class="form-label"
+                            >
+                                Full Name
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="name"
+                                name="name"
+                                placeholder="Enter your name"
+                                required
+                            >
+
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+
+                            <div class="invalid-feedback">
+                                Please enter valid data.
+                            </div>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label
+                                for="email"
+                                class="form-label"
+                            >
+                                Email Address
+                            </label>
+
+                            <input
+                                type="email"
+                                class="form-control"
+                                id="email"
+                                name="email"
+                                placeholder="Enter your email"
+                                required
+                            >
+
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+
+                            <div class="invalid-feedback">
+                                Please enter valid Email.
+                            </div>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label
+                                for="password"
+                                class="form-label"
+                            >
+                                Password
+                            </label>
+
+                            <input
+                                type="password"
+                                class="form-control"
+                                id="password"
+                                name="password"
+                                placeholder="Create a password"
+                                required
+                            >
+
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+
+                            <div class="invalid-feedback">
+                                Password must be at least 6 characters.
+                            </div>
+
+                        </div>
+
+                        <div class="mb-4">
+
+                            <label
+                                for="role"
+                                class="form-label"
+                            >
+                                Select Role
+                            </label>
+
+                            <select
+                                class="form-select"
+                                id="role"
+                                name="role"
+                                required
+                            >
+                                <option value="student" selected>
+                                    Student
+                                </option>
+
+                                <option value="recruiter">
+                                    Recruiter
+                                </option>
+
+                            </select>
+
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+
+                            <div class="invalid-feedback">
+                                Please select a role.
+                            </div>
+
+                        </div>
+
+                        <div class="d-grid">
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary"
+                            >
+                                Create Account
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                    <div class="text-center mt-4">
+
+                        <p class="mb-0">
+                            Already have an account?
+                            <a
+                                href="/talenttrack/login"
+                                class="text-decoration-none fw-semibold"
+                            >
+                                Login
+                            </a>
+                        </p>
+
+                    </div>
+
+                </div>
+
             </div>
 
-             <button type="submit" class="btn btn-primary">
-                Create Account
-            </button>
-  </form>
+        </div>
+
     </div>
+
+</div>
