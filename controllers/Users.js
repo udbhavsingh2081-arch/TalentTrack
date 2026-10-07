@@ -85,17 +85,71 @@ module.exports.login = async(req,res)=>{
             subject: "Login Alert - TalentTrack",
 
             html: `
-                <h2>Hello ${req.user.name}</h2>
+            <div style="font-family: Arial, sans-serif; max-width:600px; margin:auto; padding:20px; border:1px solid #e5e7eb; border-radius:12px;">
+
+                <div style="text-align:center; padding-bottom:20px;">
+                    <h1 style="color:#2170e4; margin:0;">
+                        TalentTrack
+                    </h1>
+
+                    <p style="color:#6b7280;">
+                        Career & Recruitment Platform
+                    </p>
+                </div>
+
+                <h2>
+                    Hello ${req.user.name},
+                </h2>
 
                 <p>
-                    You successfully logged in to
-                    <b>TalentTrack</b>.
+                    We noticed a successful login to your TalentTrack account.
+                </p>
+
+                <div style="background:#f8fafc; padding:15px; border-radius:10px; margin:20px 0;">
+                    <p>
+                        <strong>Email:</strong>
+                        ${req.user.email}
+                    </p>
+
+                    <p>
+                        <strong>Status:</strong>
+                        Login Successful
+                    </p>
+                </div>
+
+                <p>
+                    If this was you, no action is required.
                 </p>
 
                 <p>
-                    If this wasn't you,
-                    please change your password.
+                    If you did not log in, please reset your password immediately and secure your account.
                 </p>
+
+                <div style="text-align:center; margin-top:30px;">
+
+                    <a
+                        href="https://talenttrack-xsib.onrender.com"
+                        style="
+                            background:#2170e4;
+                            color:white;
+                            padding:12px 24px;
+                            text-decoration:none;
+                            border-radius:8px;
+                            display:inline-block;
+                        "
+                    >
+                        Visit TalentTrack
+                    </a>
+
+                </div>
+
+                <hr style="margin-top:30px;">
+
+                <p style="color:#6b7280; font-size:14px; text-align:center;">
+                    © 2026 TalentTrack. All Rights Reserved.
+                </p>
+
+            </div>
             `
         });
 
@@ -103,7 +157,7 @@ module.exports.login = async(req,res)=>{
 
     }catch(err){
 
-        console.log(err);
+        console.log("Email Error:",err);
 
     }
 
