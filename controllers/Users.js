@@ -169,6 +169,25 @@ module.exports.login = async(req,res)=>{
     res.redirect("/talenttrack/jobs");
 };
 
+//LogOut
+module.exports.logOut = (req,res,next)=>{
+
+    req.logout(function(err){
+
+        if(err){
+            return next(err);
+        }
+
+        req.flash(
+            "success",
+            "Logged Out Successfully"
+        );
+
+        res.redirect("/talenttrack/jobs");
+    });
+
+};
+
 //job table
 module.exports.jobTable=async(req,res)=>{
 
