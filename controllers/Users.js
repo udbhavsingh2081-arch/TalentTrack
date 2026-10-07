@@ -1,8 +1,8 @@
 const User = require("../models/user");
 const Application = require("../models/application");
 const Job = require ("../models/job");
+const resend = require("../utilis/mailer");
 const ExpressError = require("../utilis/expressError");
-const transporter = require("../utilis/mailer");
 const ai = require("../utilis/gemini");
 
 //Home Page
@@ -71,73 +71,48 @@ module.exports.loginPage=(req,res)=>{
 
     res.render("Users/login");
 };
+
 module.exports.login = async(req,res)=>{
 
-    console.log("LOGIN CONTROLLER EXECUTED");
-    console.log("EMAIL_USER:", process.env.EMAIL_USER);
-    console.log("EMAIL_PASS EXISTS:", !!process.env.EMAIL_PASS);
+    try{
 
-try {
+        await resend.emails.send({
 
-    console.log("BEFORE SENDMAIL");
+            from: "onboarding@resend.dev",
 
-    const info = await transporter.sendMail({
-        from: process.env.EMAIL_USER,
-        to: req.user.email,
-        subject: "TalentTrack Test",
-        text: "Testing Email"
-    });
+            to: req.user.email,
 
-    console.log("AFTER SENDMAIL");
-    console.log(info);
+            subject: "Login Alert - TalentTrack",
 
-} catch(err) {
+            html: `
+                <h2>Hello ${req.user.name}</h2>
 
-    console.error("EMAIL ERROR:", err);
+                <p>
+                    You successfully logged in to
+                    <b>TalentTrack</b>.
+                </p>
 
-}
+                <p>
+                    If this wasn't you,
+                    please change your password.
+                </p>
+            `
+        });
 
-    req.flash("success","Welcome Back To TalentTrack");
+        console.log("Email Sent");
+
+    }catch(err){
+
+        console.log(err);
+
+    }
+
+    req.flash(
+        "success",
+        "Welcome Back To TalentTrack"
+    );
+
     res.redirect("/talenttrack/jobs");
-};
-    //LogOut
-
-    module.exports.logOut=(req,res,next)=>{
-    req.logout(function(err){
-        if(err){
-            return next(err);
-        }
-        req.flash("success","Logged Out");
-        res.redirect("/talenttrack/jobs");
-    });
-};
-
-  //Recruiter
-
-    module.exports.recruiterDashboard= async (req,res)=>{
-
-        const jobs = await Job.find({
-            recruiter:req.user._id
-        });
-
-        const totalJobs = jobs.length;
-        const jobIds = jobs.map(job => job._id);
-        const totalApplications =
-            await Application.countDocuments({
-                job: { $in: jobIds }
-            });
-             const pendingApplications =
-            await Application.countDocuments({
-                job: { $in: jobIds },
-                status: "Pending"
-            });
-
-        res.render("recruiter/dashboard",{
-            jobs,
-            totalJobs,
-            totalApplications,
-            pendingApplications,
-        });
 };
 
 //job table
