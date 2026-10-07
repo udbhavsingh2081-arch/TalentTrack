@@ -78,7 +78,7 @@ module.exports.login = async(req,res)=>{
 
         await resend.emails.send({
 
-            from: "onboarding@resend.dev",
+            from: "TalentTrack <onboarding@resend.dev>",
 
             to: req.user.email,
 

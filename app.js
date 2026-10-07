@@ -151,11 +151,3 @@ const port = process.env.PORT || 5000;
 app.listen(port, () => {
     console.log(`Server Start on ${port}`);
 });
-transporter.sendMail({
-    from: process.env.EMAIL_USER,
-    to: "udbhavsingh2081@gmail.com",
-    subject: "TalentTrack Test",
-    text: "Email is working"
-})
-.then(()=>console.log("TEST EMAIL SENT"))
-.catch(err=>console.log("TEST EMAIL ERROR",err));
