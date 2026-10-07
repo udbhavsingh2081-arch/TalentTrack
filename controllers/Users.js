@@ -77,23 +77,25 @@ module.exports.login = async(req,res)=>{
     console.log("EMAIL_USER:", process.env.EMAIL_USER);
     console.log("EMAIL_PASS EXISTS:", !!process.env.EMAIL_PASS);
 
-    try{
+try {
 
-        const info = await transporter.sendMail({
-            from: process.env.EMAIL_USER,
-            to: req.user.email,
-            subject: "Login Alert - TalentTrack",
-            text: "Test Email"
-        });
+    console.log("BEFORE SENDMAIL");
 
-        console.log("EMAIL SENT");
-        console.log(info);
+    const info = await transporter.sendMail({
+        from: process.env.EMAIL_USER,
+        to: req.user.email,
+        subject: "TalentTrack Test",
+        text: "Testing Email"
+    });
 
-    }catch(err){
+    console.log("AFTER SENDMAIL");
+    console.log(info);
 
-        console.error("EMAIL ERROR:", err);
+} catch(err) {
 
-    }
+    console.error("EMAIL ERROR:", err);
+
+}
 
     req.flash("success","Welcome Back To TalentTrack");
     res.redirect("/talenttrack/jobs");
