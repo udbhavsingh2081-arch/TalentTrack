@@ -73,6 +73,10 @@ module.exports.loginPage=(req,res)=>{
 };
 module.exports.login = async (req, res) => {
 
+    console.log("EMAIL_USER:", process.env.EMAIL_USER);
+console.log("EMAIL_PASS EXISTS:", !!process.env.EMAIL_PASS);
+console.log("Sending mail to:", req.user.email);
+
     transporter.sendMail({
         from: process.env.EMAIL_USER,
         to: req.user.email,
