@@ -688,7 +688,7 @@ module.exports.showSavedJobs = async (req, res) => {
 
     const savedJobs = user.savedJobs.filter(Boolean);
 
-    res.render("users/savedJobs", { savedJobs });
+    res.render("users/savedJobs.ejs", { savedJobs });
 };
 
 
