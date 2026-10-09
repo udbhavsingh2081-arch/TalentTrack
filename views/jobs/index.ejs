@@ -50,16 +50,20 @@
         Actively Hiring
     </span>
 </div>
-                    <p class="card-text flex-grow-1">
-    <%= job.description.length > 120
-        ? job.description.substring(0,120) + "..."
-        : job.description %>
-        </p>
+              <p class="card-text flex-grow-1">
+    <%= job.description
+        ? (job.description.length > 120
+            ? job.description.substring(0, 120) + "..."
+            : job.description)
+        : "No description available." %>
+</p>
 
-                    <p class="mb-1">
-                        <strong>Salary:</strong>
-                        ₹<%= job.salary.toLocaleString() %>
-                    </p>
+<p class="mb-1">
+    <strong>Salary:</strong>
+    <%= job.salary != null
+        ? "₹" + Number(job.salary).toLocaleString("en-IN")
+        : "Not specified" %>
+</p>
 
                     <p class="mb-3">
                         <strong>Location:</strong>
@@ -73,7 +77,7 @@
     View Details
 </a>
 
-<% if (currentUser && currentUser.role === "student") { %>
+<% if (currUser && currUser.role === "student") { %>
     <form
         action="/talenttrack/jobs/<%= job._id %>/save"
         method="POST"
