@@ -256,6 +256,28 @@ router.get(
 );
 router.post("/student/resume",isLoggedIn,isStudent,wrapAsync(userController.resumeUpload));
 
+// Show saved jobs
+router.get(
+    "/saved-jobs",
+    isLoggedIn,
+    isStudent,
+    userController.showSavedJobs
+);
 
+// Save a job
+router.post(
+    "/jobs/:id/save",
+    isLoggedIn,
+    isStudent,
+    userController.saveJob
+);
+
+// Remove a saved job
+router.post(
+    "/saved-jobs/:id/remove",
+    isLoggedIn,
+    isStudent,
+    userController.removeSavedJob
+);
 
 module.exports = router;

@@ -66,12 +66,27 @@
                         <%= job.location %>
                     </p>
 
-                   <a
+          <a
     href="/talenttrack/jobs/<%= job._id %>"
-    class="btn btn-primary mt-auto w-100"
+    class="btn btn-primary mt-auto w-100 mb-2"
 >
     View Details
 </a>
+
+<% if (currentUser && currentUser.role === "student") { %>
+    <form
+        action="/talenttrack/jobs/<%= job._id %>/save"
+        method="POST"
+    >
+        <button
+            type="submit"
+            class="btn btn-outline-primary w-100"
+        >
+            <i class="fa-regular fa-bookmark"></i>
+            Save Job
+        </button>
+    </form>
+<% } %>
 
                 </div>
 

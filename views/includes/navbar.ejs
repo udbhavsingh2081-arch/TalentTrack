@@ -13,11 +13,17 @@
 <% } %>
 
     <% if(currUser && currUser.role === "student"){ %>
-   <a class="nav-link active" aria-current="page" href="/talenttrack/student/dashboard">
-    Dashboard
-</a>
-<% } %>
 
+    <a class="nav-link" href="/talenttrack/student/dashboard">
+        Dashboard
+    </a>
+
+    <a class="nav-link" href="/talenttrack/saved-jobs">
+        <i class="fa-regular fa-bookmark"></i>
+        Saved Jobs
+    </a>
+
+<% } %>
       </div>
       
 <form

@@ -244,6 +244,7 @@ module.exports.jobTable=async(req,res)=>{
             "/talenttrack/recruiter/applications"
         );
     };
+    
 
     //Recuiter Prolfie show 
     module.exports.recruiterProfile= async(req,res)=>{
@@ -650,4 +651,57 @@ Keep response short.
             "/talenttrack/profile"
         );
     }
+};
+//Save Job
+// Save a job
+module.exports.saveJob = async (req, res) => {
+    const { id } = req.params;
+
+    const job = await Job.findById(id);
+
+    if (!job) {
+        req.flash("error", "Job not found");
+        return res.redirect("/talenttrack/jobs");
+    }
+
+    const alreadySaved = req.user.savedJobs.some(
+        (jobId) => jobId.toString() === id
+    );
+
+    if (alreadySaved) {
+        req.flash("success", "Job is already saved");
+        return res.redirect("/talenttrack/jobs");
+    }
+
+    req.user.savedJobs.push(job._id);
+    await req.user.save();
+
+    req.flash("success", "Job saved successfully");
+    res.redirect("/talenttrack/jobs");
+};
+
+
+// Display saved jobs
+module.exports.showSavedJobs = async (req, res) => {
+    const user = await User.findById(req.user._id)
+        .populate("savedJobs");
+
+    const savedJobs = user.savedJobs.filter(Boolean);
+
+    res.render("users/savedJobs.ejs", { savedJobs });
+};
+
+
+// Remove a saved job
+module.exports.removeSavedJob = async (req, res) => {
+    const { id } = req.params;
+
+    req.user.savedJobs = req.user.savedJobs.filter(
+        (jobId) => jobId.toString() !== id
+    );
+
+    await req.user.save();
+
+    req.flash("success", "Job removed from saved jobs");
+    res.redirect("/talenttrack/saved-jobs");
 };
