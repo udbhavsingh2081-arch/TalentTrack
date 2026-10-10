@@ -1,92 +1,115 @@
+
 <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Talent Track</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-       <div class="navbar-nav nav-icon">
-        <a class="nav-link active" aria-current="page" href="/talenttrack/jobs">Browse Jobs</a>
+    <div class="container-fluid">
 
-       <% if(currUser && currUser.role === "recruiter"){ %>
-    <a href="/talenttrack/recruiter/dashboard" class="nav-link active" aria-current="page" >Dashboard</a>
-<% } %>
+        <a class="navbar-brand" href="/talenttrack/jobs">
+            Talent Track
+        </a>
 
-    <% if(currUser && currUser.role === "student"){ %>
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <a class="nav-link" href="/talenttrack/student/dashboard">
-        Dashboard
-    </a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-    <a class="nav-link" href="/talenttrack/saved-jobs">
-        <i class="fa-regular fa-bookmark"></i>
-        Saved Jobs
-    </a>
+            <!-- Left section: Navigation links -->
+            <div class="navbar-nav nav-icon align-items-lg-center">
 
-<% } %>
-      </div>
-      
-<form
-    class="d-flex search-form"
-    action="/talenttrack/jobs"
-    method="GET"
->
+                <a class="nav-link" href="/talenttrack/jobs">
+                    Browse Jobs
+                </a>
 
-    <input
-        class="form-control me-2"
-        type="text"
-        name="search"
-        placeholder="Search Jobs"
-    >
+                <% if (currUser && currUser.role === "recruiter") { %>
+                    <a class="nav-link" href="/talenttrack/recruiter/dashboard">
+                        Dashboard
+                    </a>
+                <% } %>
 
-    <button
-        class="btn btn-outline-success"
-        type="submit"
-    >
-        Search
-    </button>
+                <% if (currUser && currUser.role === "student") { %>
+                    <a class="nav-link" href="/talenttrack/student/dashboard">
+                        Dashboard
+                    </a>
 
-</form>
-
-</div>
-
-
-      <div class="navbar-nav ms-auto job-button">
-
-<% if(!currUser){ %>
-
-    <a class="nav-link" href="/talenttrack/login"><b>Login</b></a>
-
-<a class="nav-link bg-primary text-white px-3 rounded ms-lg-2"
-   href="/talenttrack/register">
-    Register
+                    <a class="nav-link saved-jobs-link" href="/talenttrack/saved-jobs">
+    <i class="fa-regular fa-bookmark"></i>
+    <span>Saved Jobs</span>
 </a>
+                <% } %>
 
-<% } else { %>
+            </div>
 
-    <span class="nav-link welcome-text">
-    Welcome <%= currUser.name %>
-</span>
-   <% if(currUser.role === "student"){ %>
+            <!-- Middle section: Search -->
+            <form
+                class="d-flex search-form mx-lg-3 my-2 my-lg-0"
+                action="/talenttrack/jobs"
+                method="GET"
+                role="search"
+            >
+                <input
+                    class="form-control me-2"
+                    type="search"
+                    name="search"
+                    placeholder="Search jobs"
+                    aria-label="Search jobs"
+                >
 
-<a href="/talenttrack/profile"
-   class="btn btn-outline-primary">
-   View Profile
-</a>
+                <button class="btn btn-outline-success" type="submit">
+                    Search
+                </button>
+            </form>
 
-<% } else if(currUser.role === "recruiter"){ %>
+            <!-- Right section: User actions -->
+            <div class="navbar-nav ms-lg-auto user-navbar align-items-lg-center">
 
-<a href="/talenttrack/recruiter/profile"
-   class="btn btn-outline-primary">
-   View Profile
-</a>
+                <% if (!currUser) { %>
 
-<% } %>
-    <a class="nav-link" href="/talenttrack/logout"><b>Logout</b></a>
+                    <a class="nav-link" href="/talenttrack/login">
+                        <b>Login</b>
+                    </a>
 
-<% } %>
+                    <a
+                        class="nav-link bg-primary text-white px-3 rounded register-link"
+                        href="/talenttrack/register"
+                    >
+                        Register
+                    </a>
 
-</div>
+                <% } else { %>
 
+                    <span class="welcome-text">
+                        Welcome <%= currUser.name %>
+                    </span>
+
+                    <% if (currUser.role === "student") { %>
+
+                        <a href="/talenttrack/profile" class="btn btn-outline-primary">
+                            View Profile
+                        </a>
+
+                    <% } else if (currUser.role === "recruiter") { %>
+
+                        <a href="/talenttrack/recruiter/profile" class="btn btn-outline-primary">
+                            View Profile
+                        </a>
+
+                    <% } %>
+
+                    <a class="nav-link logout-link" href="/talenttrack/logout">
+                        <b>Logout</b>
+                    </a>
+
+                <% } %>
+
+            </div>
+
+        </div>
     </div>
 </nav>

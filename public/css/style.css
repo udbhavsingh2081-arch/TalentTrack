@@ -13,70 +13,137 @@ body{
 /* Navbar */
 
 
-.navbar{
-    min-height:5rem;
-    background-color:white;
-    border-bottom:1px solid #e5e5e5;
+
+/* Navbar */
+.navbar {
+    min-height: 5rem;
+    background-color: white;
+    border-bottom: 1px solid #e5e5e5;
 }
 
-.navbar-brand{
-    font-weight:700;
-    color:#2170e4 !important;
+.navbar .container-fluid {
+    gap: 12px;
 }
 
-.nav-icon .nav-link{
-    font-weight:500;
+.navbar-brand {
+    font-weight: 700;
+    color: #2170e4 !important;
+    white-space: nowrap;
 }
 
-.search-form{
-    max-width:350px;
-    width:100%;
+.nav-icon {
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
-.search-form input{
-    border-radius:10px;
+.nav-icon .nav-link {
+    font-weight: 500;
+    white-space: nowrap;
 }
 
-.search-form button{
-    border-radius:10px;
+/* Saved Jobs alignment */
+.saved-jobs-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    white-space: nowrap;
 }
-  .nav-link:hover{
-    color:#2170e4 !important;
-}
-@media(max-width:991px){
 
-    .navbar-collapse{
-        padding-top:15px;
+/* Search */
+.search-form {
+    max-width: 350px;
+    width: 100%;
+    flex: 0 1 350px;
+}
+
+.search-form input {
+    border-radius: 10px;
+    min-width: 0;
+}
+
+.search-form button {
+    border-radius: 10px;
+    white-space: nowrap;
+}
+
+.nav-link:hover {
+    color: #2170e4 !important;
+}
+
+/* Welcome message, profile and logout */
+.user-navbar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    white-space: nowrap;
+}
+
+.welcome-text {
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+    padding: 0 4px;
+    line-height: 1.3;
+}
+
+.user-navbar .btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.logout-link {
+    white-space: nowrap;
+}
+
+/* Responsive navbar */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        padding-top: 15px;
     }
 
-    .nav-icon{
-        margin-right:0 !important;
-        margin-bottom:15px;
+    .nav-icon {
+        align-items: flex-start;
+        margin-right: 0 !important;
+        margin-bottom: 15px;
+        gap: 4px;
     }
 
-    .search-form{
-        max-width:100%;
-        margin-bottom:15px;
+    .search-form {
+        max-width: 100%;
+        width: 100%;
+        margin-bottom: 15px;
+        flex-basis: 100%;
     }
 
-    .job-button{
-        width:100%;
-        margin-top:10px;
+    .user-navbar,
+    .job-button {
+        width: 100%;
+        margin-top: 10px;
     }
 
+    .user-navbar {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .user-navbar .nav-link,
+    .user-navbar .btn,
     .job-button .nav-link,
-    .job-button .btn{
-        width:100%;
-        text-align:center;
-        margin-bottom:10px;
+    .job-button .btn {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 8px;
     }
 
-    .welcome-text{
-        text-align:center;
-        margin-bottom:10px;
+    .welcome-text {
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 8px;
     }
-
 }
+
 /* Cards */
 .card-box {
    display: flex;
