@@ -597,13 +597,21 @@ Keep response short.
         console.log("AI RESPONSE:");
         console.log(review);
 
-        const scoreMatch =
-        review.match(/Score:\s*(\d+)/i);
+       if (typeof review !== "string" || !review.trim()) {
+    throw new Error("Empty or invalid AI review response");
+}
 
-        const score =
-        scoreMatch
-        ? parseInt(scoreMatch[1])
-        : 0;
+const scoreMatch = review.match(/Score:\s*(\d+)/i);
+
+if (!scoreMatch) {
+    throw new Error("Invalid AI review response");
+}
+
+const score = Number(scoreMatch[1]);
+
+if (!Number.isInteger(score) || score < 0 || score > 10) {
+    throw new Error("Invalid ATS score");
+}
 
         let atsStatus;
 
@@ -652,7 +660,6 @@ Keep response short.
         );
     }
 };
-//Save Job
 // Save a job
 module.exports.saveJob = async (req, res) => {
     const { id } = req.params;
@@ -664,8 +671,12 @@ module.exports.saveJob = async (req, res) => {
         return res.redirect("/talenttrack/jobs");
     }
 
+    if (!req.user.savedJobs) {
+        req.user.savedJobs = [];
+    }
+
     const alreadySaved = req.user.savedJobs.some(
-        (jobId) => jobId.toString() === id
+        jobId => jobId.toString() === id
     );
 
     if (alreadySaved) {
@@ -686,18 +697,21 @@ module.exports.showSavedJobs = async (req, res) => {
     const user = await User.findById(req.user._id)
         .populate("savedJobs");
 
+    if (!user) {
+        req.flash("error", "User not found");
+        return res.redirect("/talenttrack/login");
+    }
+
     const savedJobs = user.savedJobs.filter(Boolean);
 
-    res.render("users/savedJobs.ejs", { savedJobs });
+    res.render("Users/savedJobs.ejs", { savedJobs });
 };
 
 
 // Remove a saved job
 module.exports.removeSavedJob = async (req, res) => {
-    const { id } = req.params;
-
-    req.user.savedJobs = req.user.savedJobs.filter(
-        (jobId) => jobId.toString() !== id
+    req.user.savedJobs = (req.user.savedJobs || []).filter(
+        jobId => jobId.toString() !== req.params.id
     );
 
     await req.user.save();
