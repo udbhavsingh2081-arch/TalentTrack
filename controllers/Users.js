@@ -391,16 +391,39 @@ applications.filter(
                 status:"Rejected"
             });
 
-       res.render(
-    "student/dashboard",
-    {
-        applications: validApplications,
-        totalApplied,
-        selected,
-        pending,
-        rejected
-    }
+            
+const profileFields = [
+    { label: "Full Name", complete: Boolean(req.user.name?.trim()) },
+    { label: "College", complete: Boolean(req.user.college?.trim()) },
+    { label: "Degree", complete: Boolean(req.user.degree?.trim()) },
+    { label: "Skills", complete: Boolean(req.user.skills?.trim()) },
+    { label: "GitHub", complete: Boolean(req.user.github?.trim()) },
+    { label: "LinkedIn", complete: Boolean(req.user.linkedin?.trim()) },
+    { label: "Resume", complete: Boolean(req.user.resume?.url) }
+];
+
+const completedFields = profileFields.filter(
+    field => field.complete
+).length;
+
+const profileCompletion = Math.round(
+    (completedFields / profileFields.length) * 100
 );
+
+const missingProfileFields = profileFields.filter(
+    field => !field.complete
+);
+
+
+   res.render("student/dashboard", {
+    applications: validApplications,
+    totalApplied,
+    selected,
+    pending,
+    rejected,
+    profileCompletion,
+    missingProfileFields
+});
     };
 
     //applicationTable

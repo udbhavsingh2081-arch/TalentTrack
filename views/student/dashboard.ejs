@@ -7,6 +7,66 @@
         Track and manage your job applications
     </p>
 
+    
+<!-- Profile Completeness Card -->
+<div class="card shadow-sm border-0 mb-4">
+    <div class="card-body p-4">
+
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <h5 class="mb-0">Profile Completeness</h5>
+
+            <span class="fw-bold text-primary">
+                <%= profileCompletion %>%
+            </span>
+        </div>
+
+        <div
+            class="progress mb-3"
+            role="progressbar"
+            aria-label="Profile completeness"
+            aria-valuenow="<%= profileCompletion %>"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            style="height: 10px;"
+        >
+            <div
+                class="progress-bar bg-success"
+                style="width: <%= profileCompletion %>%"
+            ></div>
+        </div>
+
+        <% if (profileCompletion === 100) { %>
+
+            <p class="text-success mb-3">
+                <i class="fa-solid fa-circle-check"></i>
+                Great! Your profile is complete.
+            </p>
+
+        <% } else { %>
+
+            <p class="text-muted mb-2">
+                Complete your profile to help recruiters learn more about you.
+            </p>
+
+            <p class="fw-semibold mb-2">Still missing:</p>
+
+            <ul class="mb-3">
+                <% missingProfileFields.forEach(field => { %>
+                    <li><%= field.label %></li>
+                <% }) %>
+            </ul>
+
+        <% } %>
+
+        <a href="/talenttrack/profile"
+           class="btn btn-outline-primary btn-sm">
+            <i class="fa-regular fa-user"></i>
+            Update Profile
+        </a>
+
+    </div>
+</div>
+
     <!-- Stats Cards -->
     <div class="row mb-4">
 
