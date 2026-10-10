@@ -61,7 +61,7 @@
 <p class="mb-1">
     <strong>Salary:</strong>
     <%= job.salary != null
-        ? "₹" + Number(job.salary).toLocaleString("en-IN")
+        ? "₹" + Number(job.salary).toLocaleString("en-IN")+"/month"
         : "Not specified" %>
 </p>
 
