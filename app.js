@@ -1,4 +1,5 @@
 const express=require("express");
+require("dotenv").config();
 const app=express();
 const mongoose=require("mongoose");
 const dbUrl = process.env.ATLASDB_URL;
@@ -6,7 +7,7 @@ const resend = require("./utilis/mailer.js");
 const path=require("path");
 const ejsMate=require("ejs-mate");
 const methodOverride = require("method-override");
-require("dotenv").config();
+
 console.log("Cloud Name =", process.env.CLOUD_NAME);
 
 
