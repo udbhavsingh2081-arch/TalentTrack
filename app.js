@@ -145,9 +145,8 @@ app.get("/me",(req,res)=>{
 
 
 
+const PORT = process.env.PORT || 5000;
 
-const port = process.env.PORT || 5000;
-
-app.listen(port, () => {
-    console.log(`Server Start on ${port}`);
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server started on port ${PORT}`);
 });
