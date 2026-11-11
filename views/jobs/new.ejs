@@ -119,6 +119,75 @@
                     required
                 >
                     
+
+                <hr class="my-4">
+
+<h5 class="mb-3">Candidate Requirements</h5>
+
+<div class="mb-3">
+    <label for="requiredSkills" class="form-label">Required Skills</label>
+    <input
+        type="text"
+        class="form-control"
+        id="requiredSkills"
+        name="requiredSkills"
+        placeholder="JavaScript, Node.js, MongoDB"
+    >
+    <small class="text-muted">Separate skills with commas.</small>
+</div>
+
+<div class="mb-3">
+    <label for="minCGPA" class="form-label">Minimum CGPA</label>
+    <input
+        type="number"
+        class="form-control"
+        id="minCGPA"
+        name="minCGPA"
+        min="0"
+        max="10"
+        step="0.01"
+        placeholder="7.5"
+    >
+</div>
+
+<div class="mb-3">
+    <label for="degree" class="form-label">Eligible Degrees</label>
+    <input
+        type="text"
+        class="form-control"
+        id="degree"
+        name="degree"
+        placeholder="B.Tech CSE, BCA, MCA"
+    >
+    <small class="text-muted">Separate degrees with commas.</small>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <label for="experience" class="form-label">Required Experience</label>
+        <input
+            type="number"
+            class="form-control"
+            id="experience"
+            name="experience"
+            min="0"
+            step="0.5"
+            value="0"
+        >
+        <small class="text-muted">Experience in years.</small>
+    </div>
+
+    <div class="col-md-6 mb-3">
+        <label for="workMode" class="form-label">Work Mode</label>
+        <select class="form-select" id="workMode" name="workMode">
+            <option value="Onsite">Onsite</option>
+            <option value="Remote">Remote</option>
+            <option value="Hybrid">Hybrid</option>
+        </select>
+    </div>
+</div>
+
+<hr class="my-4">
                  <div class="valid-feedback">looks good!</div>
                <div class="invalid-feedback">Please enter valid data</div>
             </div>

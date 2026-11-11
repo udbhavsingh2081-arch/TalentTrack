@@ -118,7 +118,57 @@
                         readonly
                     >
                 </div>
+                <div class="col-md-6 mb-4">
+    <label class="form-label fw-bold">
+        CGPA
+    </label>
 
+    <input
+        type="text"
+        class="form-control"
+        value="<%= student.cgpa != null ? student.cgpa : '' %>"
+        readonly
+    >
+</div>
+
+<div class="col-md-6 mb-4">
+    <label class="form-label fw-bold">
+        Experience (Years)
+    </label>
+
+    <input
+        type="text"
+        class="form-control"
+        value="<%= student.experience != null ? student.experience : 0 %>"
+        readonly
+    >
+</div>
+
+<div class="col-md-6 mb-4">
+    <label class="form-label fw-bold">
+        Preferred Location
+    </label>
+
+    <input
+        type="text"
+        class="form-control"
+        value="<%= student.preferredLocation || '' %>"
+        readonly
+    >
+</div>
+
+<div class="col-md-6 mb-4">
+    <label class="form-label fw-bold">
+        Preferred Work Mode
+    </label>
+
+    <input
+        type="text"
+        class="form-control"
+        value="<%= student.workMode || '' %>"
+        readonly
+    >
+</div>
                 <div class="col-md-6 mb-4">
                     <label class="form-label fw-bold">
                         Skills

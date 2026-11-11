@@ -399,7 +399,11 @@ const profileFields = [
     { label: "Skills", complete: Boolean(req.user.skills?.trim()) },
     { label: "GitHub", complete: Boolean(req.user.github?.trim()) },
     { label: "LinkedIn", complete: Boolean(req.user.linkedin?.trim()) },
-    { label: "Resume", complete: Boolean(req.user.resume?.url) }
+    { label: "Resume", complete: Boolean(req.user.resume?.url) },
+    { label: "CGPA", complete: req.user.cgpa != null },
+{ label: "Experience", complete: req.user.experience != null },
+{ label: "Preferred Location", complete: Boolean(req.user.preferredLocation?.trim()) },
+{ label: "Work Mode", complete: Boolean(req.user.workMode) },
 ];
 
 const completedFields = profileFields.filter(
@@ -483,7 +487,23 @@ const missingProfileFields = profileFields.filter(
             student.github = req.body.github;
             student.linkedin = req.body.linkedin;
             student.bio = req.body.bio;
-    
+                // Job match details
+    student.cgpa = req.body.cgpa
+        ? Number(req.body.cgpa)
+        : undefined;
+
+    student.experience = Number(req.body.experience || 0);
+
+    student.preferredLocation = req.body.preferredLocation;
+
+    student.workMode = req.body.workMode;
+
+    if (req.files.resume) {
+        student.resume = {
+            url: req.files.resume[0].path,
+            filename: req.files.resume[0].filename
+        };
+    }
            if(req.files.resume){
     
         student.resume = {

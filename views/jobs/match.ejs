@@ -1,0 +1,186 @@
+
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-4 mb-5">
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-body text-center">
+
+            <h3><%= job.title %></h3>
+            <h6 class="text-muted"><%= job.company %></h6>
+
+            <div class="my-4">
+
+                <h1 class="display-3 fw-bold text-success">
+                    <%= matchScore %>%
+                </h1>
+
+                <h5>Job Match Score</h5>
+
+                <p class="text-muted">
+                    Based on your profile and job requirements
+                </p>
+
+            </div>
+
+            <div class="progress" style="height: 12px;">
+                <div
+                    class="progress-bar bg-success"
+                    role="progressbar"
+                    style="width: <%= matchScore %>%"
+                    aria-valuenow="<%= matchScore %>"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                ></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Match Breakdown -->
+
+    <div class="card shadow-sm mb-4">
+
+        <div class="card-body">
+
+            <h4 class="mb-4">Match Breakdown</h4>
+
+            <% for(let item of breakdown){ %>
+
+                <div class="mb-4">
+
+                    <div class="d-flex justify-content-between mb-2">
+
+                        <strong><%= item.label %></strong>
+
+                        <span>
+                            <%= item.earned %>/<%= item.total %>
+                        </span>
+
+                    </div>
+
+                    <div class="progress" style="height: 9px;">
+
+                        <div
+                            class="progress-bar bg-primary"
+                            style="width: <%= (item.earned / item.total) * 100 %>%"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+            <% } %>
+
+        </div>
+
+    </div>
+
+    <!-- Skills -->
+
+    <div class="row g-4 mb-4">
+
+        <div class="col-md-6">
+
+            <div class="card shadow-sm h-100">
+
+                <div class="card-body">
+
+                    <h5 class="text-success mb-3">
+                        Matched Skills
+                    </h5>
+
+                    <% if(matchedSkills.length > 0){ %>
+
+                        <% for(let skill of matchedSkills){ %>
+
+                            <span class="badge bg-success me-2 mb-2">
+                                <%= skill %>
+                            </span>
+
+                        <% } %>
+
+                    <% } else { %>
+
+                        <p class="text-muted">
+                            No matching skills found.
+                        </p>
+
+                    <% } %>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="card shadow-sm h-100">
+
+                <div class="card-body">
+
+                    <h5 class="text-danger mb-3">
+                        Skills to Improve
+                    </h5>
+
+                    <% if(missingSkills.length > 0){ %>
+
+                        <% for(let skill of missingSkills){ %>
+
+                            <span class="badge bg-danger me-2 mb-2">
+                                <%= skill %>
+                            </span>
+
+                        <% } %>
+
+                    <% } else { %>
+
+                        <p class="text-success">
+                            You have all the listed required skills!
+                        </p>
+
+                    <% } %>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Gemini Analysis -->
+
+    <div class="card shadow-sm mb-4">
+
+        <div class="card-body">
+
+            <h4 class="mb-3">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                Gemini AI Career Analysis
+            </h4>
+
+            <div style="white-space: pre-line; line-height: 1.8;">
+                <%= aiAnalysis %>
+            </div>
+
+        </div>
+
+    </div>
+
+    <a
+        href="/talenttrack/jobs/<%= job._id %>"
+        class="btn btn-primary"
+    >
+        Back to Job
+    </a>
+
+    <a
+        href="/talenttrack/jobs"
+        class="btn btn-outline-secondary"
+    >
+        All Jobs
+    </a>
+
+</div>

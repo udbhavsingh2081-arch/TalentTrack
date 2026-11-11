@@ -29,7 +29,31 @@ const jobSchema=new mongoose.Schema({
          type:mongoose.Schema.Types.ObjectId,
          ref:"User",
     },
-    
+    requiredSkills: {
+    type: [String],
+    default: []
+},
+
+minCGPA: {
+    type: Number,
+    default: null
+},
+
+degree: {
+    type: [String],
+    default: []
+},
+
+experience: {
+    type: Number,
+    default: 0
+},
+
+workMode: {
+    type: String,
+    enum: ["Remote", "Hybrid", "Onsite"],
+    default: "Onsite"
+}
 
 });
 const Job=mongoose.model ("Job",jobSchema);

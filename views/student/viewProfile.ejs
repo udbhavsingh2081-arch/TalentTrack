@@ -95,7 +95,72 @@
                     >
 
                 </div>
+                <!-- Academic and Job Preferences -->
 
+<div class="col-md-6 mb-3">
+    <label class="form-label fw-bold">
+        Graduation Year
+    </label>
+
+    <input
+        type="text"
+        class="form-control"
+        value="<%= student.graduationYear || 'Not Added' %>"
+        readonly
+    >
+</div>
+
+<div class="col-md-6 mb-3">
+    <label class="form-label fw-bold">
+        CGPA
+    </label>
+
+    <input
+        type="text"
+        class="form-control"
+        value="<%= student.cgpa != null ? student.cgpa : 'Not Added' %>"
+        readonly
+    >
+</div>
+
+<div class="col-md-6 mb-3">
+    <label class="form-label fw-bold">
+        Experience
+    </label>
+
+    <input
+        type="text"
+        class="form-control"
+        value="<%= student.experience != null ? student.experience + ' Years' : 'Not Added' %>"
+        readonly
+    >
+</div>
+
+<div class="col-md-6 mb-3">
+    <label class="form-label fw-bold">
+        Preferred Location
+    </label>
+
+    <input
+        type="text"
+        class="form-control"
+        value="<%= student.preferredLocation || 'Not Added' %>"
+        readonly
+    >
+</div>
+
+<div class="col-md-6 mb-3">
+    <label class="form-label fw-bold">
+        Preferred Work Mode
+    </label>
+
+    <input
+        type="text"
+        class="form-control"
+        value="<%= student.workMode || 'Not Added' %>"
+        readonly
+    >
+</div>
                 <!-- Skills -->
 
                 <div class="col-md-12 mb-3">

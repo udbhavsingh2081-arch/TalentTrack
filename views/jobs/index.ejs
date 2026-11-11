@@ -78,6 +78,16 @@
 </a>
 
 <% if (currUser && currUser.role === "student") { %>
+
+       <!-- Check Job Match Button -->
+    <a
+        href="/talenttrack/jobs/<%= job._id %>/match"
+        class="btn btn-outline-success w-100 mb-2"
+    >
+        <i class="fa-solid fa-chart-simple"></i>
+        Check Match
+    </a>
+    
     <form
         action="/talenttrack/jobs/<%= job._id %>/save"
         method="POST"

@@ -98,5 +98,12 @@ router.post(
         jobController.applyJob
     )
 );
+router.get(
+    "/:id/match",
+    validateObjectId,
+    isLoggedIn,
+    isStudent,
+    wrapAsync(jobController.checkJobMatch)
+);
 
-module.exports = router;
+module.exports=router;

@@ -47,6 +47,28 @@ const userSchema = new mongoose.Schema({
         enum:["student","recruiter","admin"],
         default:"student"
     },
+    cgpa: {
+    type: Number,
+    min: 0,
+    max: 10
+},
+
+experience: {
+    type: Number,
+    min: 0,
+    default: 0
+},
+
+preferredLocation: {
+    type: String,
+    trim: true
+},
+
+workMode: {
+    type: String,
+    enum: ["Onsite", "Remote", "Hybrid"],
+    default: "Onsite"
+},
     savedJobs:[
     {
         type:mongoose.Schema.Types.ObjectId,
