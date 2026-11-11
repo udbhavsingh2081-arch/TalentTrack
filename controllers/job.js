@@ -2,7 +2,7 @@ const Job = require ("../models/job");
 
 const Application = require("../models/application");
 const ExpressError = require("../utilis/expressError");
-const ai = require("../utils/gemini");
+const ai = require("../utilis/gemini");
 
 
 //jobs display
